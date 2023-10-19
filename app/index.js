@@ -3,6 +3,7 @@ import React from 'react';
 import { images, icons, COLORS, SIZES } from '../constants'
 import { Stack, useRouter } from 'expo-router';
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components';
+import { ScrollView } from 'react-native-gesture-handler';
 
 export default function Home() {
     return (
@@ -17,10 +18,23 @@ export default function Home() {
                         <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
                     ),
                     headerRight: () => (
-                        <ScreenHeaderBtn iconUrl={icons.profile} dimension="100%" />
-                    )
+                        <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
+                    ),
+                    headerTitle: ""
                 }}
             />
+            <ScrollView showsVerticalScrollIndicator={false}>
+                <View
+                    style={{
+                        flex: 1,
+                        padding: SIZES.medium
+                    }}
+                >
+                    <Welcome />
+                    <Popularjobs />
+                    <Nearbyjobs />
+                </View>
+            </ScrollView>
         </SafeAreaView>
     )
 }
